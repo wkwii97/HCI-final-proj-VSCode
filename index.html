@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Virtual Garage</title>
     <link rel="stylesheet" href="/style.css"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body { margin: 0; }
 
@@ -81,14 +83,19 @@
             <div class="row">
                 <div class="col-6">
                     <p id="car-speed">Speed: 0</p>
-                    <label for="speed-progress">Top Speed:</label>
-                    <progress id="speed-progress" value="10" max="100"> 32% </progress>
+                    <p id="car-top-speed">TopSpeed:</p>
+                    <div class="w3-grey">
+                        <div class="w3-container w3-blue w3-center" style="width:75%" >80mph</div>
+                    </div>
                 </div>
                 <div class="col-6">
                     <p id="car-distance">Mileage: 400,000</p>
-                    <label for="mileage-progress">Fuel Efficiency:</label>
-                    <progress id="mileage-progress" value="10" max="100"> 32% </progress>
+                    <p id="car-fuel-efficiency">Fuel Efficieny:</p>
+                    <div class="w3-grey">
+                        <div class="w3-container w3-blue w3-center" style="width:10%" >5MPG</div>
+                    </div>
                 </div>
+                
             </div>
             <div class="row">
                 <div class="col-12">
