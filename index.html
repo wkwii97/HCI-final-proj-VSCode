@@ -1,56 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>My first three.js app</title>
-		<style>
-			body { margin: 0; }
+<head>
+    <meta charset="utf-8">
+    <title>Virtual Garage</title>
+    <link rel="stylesheet" href="/style.css"> 
+    <style>
+        body { margin: 0; }
 
+        #car-stats-container {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 25vh;
+            height: 50vh;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            text-align: center;
+            background-color: rgba(112, 107, 117, 0.8);
+            color: aliceblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
 
-			#car-stats-container {
-				position: absolute;
-				top: 200px;
-				left: 200px;
-				width: 25vh;
-				height: 50vh;
-				padding: 5px;
-				font-family: Monospace;
-				font-size: 13px;
-				text-align: center;
-				background-color: rgba(112, 107, 117, 0.168);
-				color: aliceblue;
-			}
-		</style>
-	</head>
-	<body>
-		<script type="module" src="/main.js"></script>
+        .row {
+            margin-bottom: 15px;
+        }
 
-		<div id="info">
-			<div class="container" id="car-stats-container">
-				<div class="row">
-					<div class="col-12">
-						<h1 id="car-name">Rusty Truck</h1>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-6">
-						<p id="car-speed">Speed: 0</p>
-					</div>
-					<div class="col-6">
-						<p id="car-distance">Mileage: 400,000</p>
-					</div>
-					<h5>Top Speed:</h5>
-					<label for="file">2 MPH</label>
-					<progress id="file" value="10" max="100"> 32% </progress>
-					<h5>Fuel Efficiency: </h5>
-					<label for="file">5 MPG</label>
-					<progress id="file" value="10" max="100"> 32% </progress>
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-				</div>
-			</div>
-		</div>
-	</body>
+        button:hover {
+            background-color: #2980b9;
+        }
+		.level-indicator {
+            width: 100%;
+            height: 15px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        .level-bar {
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .level-label {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+    
+        .low-level .level-bar { background-color: #e74c3c; } 
+        .normal-level .level-bar { background-color: #f39c12; } 
+        .high-level .level-bar { background-color: #2ecc71; }
+    
+    </style>
+</head>
+<body>
+    <script type="module" src="/main.js"></script>
+
+    <div id="info">
+        <div class="container" id="car-stats-container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 id="car-name">Rusty Truck</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p id="car-speed">Speed: 0</p>
+                    <label for="speed-progress">Top Speed:</label>
+                    <progress id="speed-progress" value="10" max="100"> 32% </progress>
+                </div>
+                <div class="col-6">
+                    <p id="car-distance">Mileage: 400,000</p>
+                    <label for="mileage-progress">Fuel Efficiency:</label>
+                    <progress id="mileage-progress" value="10" max="100"> 32% </progress>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5>Fuel Level:</h5>
+                    <div class="level-indicator high-level">
+                        <div class="level-bar" id="fuel-level-level"></div>
+                    </div>
+                    <p id="fuel-level-label" class="level-label">Full</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5>Last Maintenance:</h5>
+                    <p id="last-maintenance">Oil change on 01/01/2023</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5>Controls:</h5>
+                    <button id="start-engine">Start Engine</button>
+                    <button id="stop-engine">Stop Engine</button>
+                    <button id="honk-horn">Honk Horn</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>Engine Temperature:</h5>
+                    <div class="level-indicator normal-level">
+                        <div class="level-bar" id="engine-temperature-level"></div>
+                    </div>
+                    <p id="engine-temperature-label" class="level-label">Normal</p>
+                </div>
+                <div class="col-6">
+                    <h5>Tire Pressure:</h5>
+                    <div class="level-indicator normal-level">
+                        <div class="level-bar" id="tire-pressure-level"></div>
+                    </div>
+                    <p id="tire-pressure-label" class="level-label">30 PSI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
-
-
-

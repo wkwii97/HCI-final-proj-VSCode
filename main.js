@@ -74,3 +74,19 @@ function animate() {
 
 
 animate();
+
+
+const engineTemperatureLevel = document.getElementById('engine-temperature-level');
+const tirePressureLevel = document.getElementById('tire-pressure-level');
+
+// We can update levels by giving values between 0 and 100
+const engineTemperatureValue = 50;
+const tirePressureValue = 50;
+const fuelLevelLevel = document.getElementById('fuel-level-level');
+const fuelLevelValue = 100;
+
+
+// We can set width based on values
+engineTemperatureLevel.style.width = `${engineTemperatureValue}%`;
+tirePressureLevel.style.width = `${tirePressureValue}%`;
+fuelLevelLevel.style.width = `${fuelLevelValue}%`;
