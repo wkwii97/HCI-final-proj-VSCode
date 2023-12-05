@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-   		<link rel="stylesheet" href="style.css">
-   		<title>Virtual Garage</title>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+
+
+			#car-stats-container {
+				position: absolute;
+				top: 200px;
+				left: 200px;
+				width: 25vh;
+				height: 50vh;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				text-align: center;
+				background-color: lightgray;
+			}
+		</style>
 	</head>
 	<body>
-   		<div id="garage-container"></div>
-   		<script type="module" src="main.js"></script>
-  
+		<script type="module" src="/main.js"></script>
+
+		<div id="info">
+			<div class="container" id="car-stats-container">
+				<div class="row">
+					<div class="col-12">
+						<h1 id="car-name">Car Name</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<p id="car-speed">Speed: 0</p>
+					</div>
+					<div class="col-6">
+						<p id="car-distance">Distance: 0</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
+
 
 
