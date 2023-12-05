@@ -3,29 +3,74 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 5, 10);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-        // Add Ambient Light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-        scene.add(ambientLight);
 
-        const loader = new GLTFLoader();
-        loader.load('raw.glb', (gltf) => {
-            scene.add(gltf.scene);
-        }, undefined, (error) => {
-            console.error('Error loading GLB model:', error);
-        });
+// Ambient Light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
 
-		const controls = new OrbitControls( camera, renderer.domElement );
-        camera.position.z = 5;
 
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
+// Directional Light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(5, 5, 5);
+scene.add(directionalLight);
 
-        animate();
+
+// Floor
+const floorGeometry = new THREE.PlaneGeometry(100, 100);
+const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x808080, metalness: 0.2, roughness: 0.8 });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -2; // Adjust floor level here!
+scene.add(floor);
+
+
+// Loading 3D Model
+const loader = new GLTFLoader();
+loader.load('raw.glb', (gltf) => {
+   const car = gltf.scene;
+   car.position.y = 1;
+   scene.add(car);
+}, undefined, (error) => {
+   console.error('Error loading GLB model:', error);
+});
+
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.25;
+
+
+// Handle window resize, less laggings
+window.addEventListener('resize', () => {
+   const newWidth = window.innerWidth;
+   const newHeight = window.innerHeight;
+
+
+   camera.aspect = newWidth / newHeight;
+   camera.updateProjectionMatrix();
+
+
+   renderer.setSize(newWidth, newHeight);
+});
+
+
+// Animation
+function animate() {
+   requestAnimationFrame(animate);
+
+
+   controls.update();
+
+
+   renderer.render(scene, camera);
+}
+
+
+animate();
