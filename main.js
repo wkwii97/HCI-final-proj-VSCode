@@ -30,7 +30,7 @@ mygarage.load('garage/uploads-files-4420114-new_garage_3D_scene.glb', (gltf) => 
    scene.add(garage);
    
    const loader = new GLTFLoader();
-   loader.load('raw.glb', (carGltf) => {
+   loader.load('WarrenCar2.glb', (carGltf) => {
       car = carGltf.scene; 
       car.position.set(5.7, 2.1, 0);
       car.scale.set(1, 1, 1);
