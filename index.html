@@ -13,7 +13,7 @@
             position: absolute;
             top: 20%;
             left: 10%;
-            width: 25vh;
+            width: 35vh;
             height: 50vh;
             padding: 20px;
             font-family: 'Arial', sans-serif;
@@ -69,11 +69,39 @@
         .low-level .level-bar { background-color: #e74c3c; } 
         .normal-level .level-bar { background-color: #f39c12; } 
         .high-level .level-bar { background-color: #2ecc71; }
+
+        #start-engine, #stop-engine, #honk-horn {
+            margin-top: 5px;
+            width: 100%;
+
+        }
+
+        .nav-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7%;
+            background-color: lightslategray;
+            color: aliceblue;
+            overflow-y: auto;
+            padding-left: 20px;
+        }
     
     </style>
 </head>
 <body>
     <script type="module" src="/main.js"></script>
+
+    <div class="nav-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Virtual Garage</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="info">
         <div class="container" id="car-stats-container">
