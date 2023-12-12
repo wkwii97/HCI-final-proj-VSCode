@@ -30,7 +30,7 @@ mygarage.load('garage/uploads-files-4420114-new_garage_3D_scene.glb', (gltf) => 
    scene.add(garage);
    
    const loader = new GLTFLoader();
-   loader.load('WarrenCar2.glb', (carGltf) => {
+   loader.load('WarrenCar.glb', (carGltf) => {
       car = carGltf.scene; 
       car.position.set(5.7, 2.1, 0);
       car.scale.set(1, 1, 1);
@@ -96,6 +96,9 @@ animate();
 
 const engineTemperatureLevel = document.getElementById('engine-temperature-level');
 const tirePressureLevel = document.getElementById('tire-pressure-level');
+const startEngineButton = document.getElementById('start-engine');
+const byeButton = document.getElementById('stop-engine');
+const honkHornButton = document.getElementById('honk-horn');
 
 // We can update levels by giving values between 0 and 100
 const engineTemperatureValue = 50;
@@ -108,3 +111,19 @@ const fuelLevelValue = 100;
 engineTemperatureLevel.style.width = `${engineTemperatureValue}%`;
 tirePressureLevel.style.width = `${tirePressureValue}%`;
 fuelLevelLevel.style.width = `${fuelLevelValue}%`;
+
+
+const engineStartSound = new Audio('engine-start.mp3');
+startEngineButton.addEventListener('click', () => {
+    engineStartSound.play();
+});
+const engineStopSound = new Audio('byeSound.mp3');
+byeButton.addEventListener('click', () => {
+   engineStopSound.play();
+});
+
+const honkHornSound = new Audio('honk-horn.mp3');
+honkHornButton.addEventListener('click', () => {
+   honkHornSound.play();
+});
+
