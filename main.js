@@ -30,13 +30,13 @@ mygarage.load('garage/uploads-files-4420114-new_garage_3D_scene.glb', (gltf) => 
    scene.add(garage);
    
    const loader = new GLTFLoader();
-   loader.load('WarrenCar.glb', (carGltf) => {
+   loader.load('lukeCar.glb', (carGltf) => {
       car = carGltf.scene; 
 
       /* Adjust these values to adjust car position..... (x, y, z) */
-      car.position.set(5, 0, 0);
-      car.scale.set(1, 1, 1);
-      car.rotation.set(0, Math.PI / 2, 0);
+      car.position.set(6, 0, 0);
+      car.scale.set(7, 7, 7);
+      car.rotation.set(0, Math.PI / 0.3, 0);
 
       const horizontalRotationAngle = Math.PI / -1.5;
       car.rotation.y += horizontalRotationAngle;
